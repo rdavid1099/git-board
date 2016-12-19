@@ -1,1 +1,29 @@
-<h1>HEY!</h1>
+<h1>GITBOARD</h1>
+<table class='striped'>
+  <tr>
+    <th>Total Commits</th>
+    <th>Latest Committer</th>
+    <th>Time Since Last Commit</th>
+  </tr>
+  <tr>
+    <td><%= @commits.count %></td>
+    <td><%= @commits.last.committer.username %></td>
+    <td><%= @commits.last.created_at %></td>
+  </tr>
+</table>
+
+<h2>The Latest!</h2>
+<table>
+  <tr>
+    <th>Sha</th>
+    <th>Message</th>
+    <th>URL</th>
+  </tr>
+  <% @commits.each do |commit| %>
+    <tr>
+      <td><%= commit.sha %></td>
+      <td><%= commit.message %></td>
+      <td><%= commit.url %></td>
+    </tr>
+  <% end %>
+</table>
