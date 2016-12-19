@@ -1,58 +1,190 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
-# Prevent database truncation if the environment is production
+
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
 
-# Requires supporting ruby files with custom matchers and macros, etc, in
-# spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
-# run as spec files by default. This means that files in spec/support that end
-# in _spec.rb will both be required and run as specs, causing the specs to be
-# run twice. It is recommended that you do not name files matching this glob to
-# end with _spec.rb. You can configure this pattern with the --pattern
-# option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
-#
-# The following line is provided for convenience purposes. It has the downside
-# of increasing the boot-up time by auto-requiring all files in the support
-# directory. Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
-#
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
-# Checks for pending migration and applies them before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
   config.use_transactional_fixtures = true
-
-  # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
-  #
-  # You can disable this behaviour by removing the line below, and instead
-  # explicitly tag your specs with their type, e.g.:
-  #
-  #     RSpec.describe UsersController, :type => :controller do
-  #       # ...
-  #     end
-  #
-  # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
-  # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+end
+
+def github_response
+  {
+    "ref": "refs/heads/changes",
+    "before": "9049f1265b7d61be4a8904a9a27120d2064dab3b",
+    "after": "0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c",
+    "created": false,
+    "deleted": false,
+    "forced": false,
+    "base_ref": nil,
+    "compare": "https://github.com/baxterthehacker/public-repo/compare/9049f1265b7d...0d1a26e67d8f",
+    "commits": [
+      {
+        "id": "0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c",
+        "tree_id": "f9d2a07e9488b91af2641b26b9407fe22a451433",
+        "distinct": true,
+        "message": "Update README.md",
+        "timestamp": "2015-05-05T19:40:15-04:00",
+        "url": "https://github.com/baxterthehacker/public-repo/commit/0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c",
+        "author": {
+          "name": "baxterthehacker",
+          "email": "baxterthehacker@users.noreply.github.com",
+          "username": "baxterthehacker"
+        },
+        "committer": {
+          "name": "baxterthehacker",
+          "email": "baxterthehacker@users.noreply.github.com",
+          "username": "baxterthehacker"
+        },
+        "added": [
+
+        ],
+        "removed": [
+
+        ],
+        "modified": [
+          "README.md"
+        ]
+      }
+    ],
+    "head_commit": {
+      "id": "0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c",
+      "tree_id": "f9d2a07e9488b91af2641b26b9407fe22a451433",
+      "distinct": true,
+      "message": "Update README.md",
+      "timestamp": "2015-05-05T19:40:15-04:00",
+      "url": "https://github.com/baxterthehacker/public-repo/commit/0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c",
+      "author": {
+        "name": "baxterthehacker",
+        "email": "baxterthehacker@users.noreply.github.com",
+        "username": "baxterthehacker"
+      },
+      "committer": {
+        "name": "baxterthehacker",
+        "email": "baxterthehacker@users.noreply.github.com",
+        "username": "baxterthehacker"
+      },
+      "added": [
+
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "README.md"
+      ]
+    },
+    "repository": {
+      "id": 35129377,
+      "name": "public-repo",
+      "full_name": "baxterthehacker/public-repo",
+      "owner": {
+        "name": "baxterthehacker",
+        "email": "baxterthehacker@users.noreply.github.com"
+      },
+      "private": false,
+      "html_url": "https://github.com/baxterthehacker/public-repo",
+      "description": "",
+      "fork": false,
+      "url": "https://github.com/baxterthehacker/public-repo",
+      "forks_url": "https://api.github.com/repos/baxterthehacker/public-repo/forks",
+      "keys_url": "https://api.github.com/repos/baxterthehacker/public-repo/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/baxterthehacker/public-repo/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/baxterthehacker/public-repo/teams",
+      "hooks_url": "https://api.github.com/repos/baxterthehacker/public-repo/hooks",
+      "issue_events_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/baxterthehacker/public-repo/events",
+      "assignees_url": "https://api.github.com/repos/baxterthehacker/public-repo/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/baxterthehacker/public-repo/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/baxterthehacker/public-repo/tags",
+      "blobs_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/baxterthehacker/public-repo/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/baxterthehacker/public-repo/languages",
+      "stargazers_url": "https://api.github.com/repos/baxterthehacker/public-repo/stargazers",
+      "contributors_url": "https://api.github.com/repos/baxterthehacker/public-repo/contributors",
+      "subscribers_url": "https://api.github.com/repos/baxterthehacker/public-repo/subscribers",
+      "subscription_url": "https://api.github.com/repos/baxterthehacker/public-repo/subscription",
+      "commits_url": "https://api.github.com/repos/baxterthehacker/public-repo/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/baxterthehacker/public-repo/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/baxterthehacker/public-repo/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/baxterthehacker/public-repo/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/baxterthehacker/public-repo/merges",
+      "archive_url": "https://api.github.com/repos/baxterthehacker/public-repo/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/baxterthehacker/public-repo/downloads",
+      "issues_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/baxterthehacker/public-repo/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/baxterthehacker/public-repo/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/baxterthehacker/public-repo/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/baxterthehacker/public-repo/labels{/name}",
+      "releases_url": "https://api.github.com/repos/baxterthehacker/public-repo/releases{/id}",
+      "created_at": 1430869212,
+      "updated_at": "2015-05-05T23:40:12Z",
+      "pushed_at": 1430869217,
+      "git_url": "git://github.com/baxterthehacker/public-repo.git",
+      "ssh_url": "git@github.com:baxterthehacker/public-repo.git",
+      "clone_url": "https://github.com/baxterthehacker/public-repo.git",
+      "svn_url": "https://github.com/baxterthehacker/public-repo",
+      "homepage": nil,
+      "size": 0,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": nil,
+      "has_issues": true,
+      "has_downloads": true,
+      "has_wiki": true,
+      "has_pages": true,
+      "forks_count": 0,
+      "mirror_url": nil,
+      "open_issues_count": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "stargazers": 0,
+      "master_branch": "master"
+    },
+    "pusher": {
+      "name": "baxterthehacker",
+      "email": "baxterthehacker@users.noreply.github.com"
+    },
+    "sender": {
+      "login": "baxterthehacker",
+      "id": 6752317,
+      "avatar_url": "https://avatars.githubusercontent.com/u/6752317?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/baxterthehacker",
+      "html_url": "https://github.com/baxterthehacker",
+      "followers_url": "https://api.github.com/users/baxterthehacker/followers",
+      "following_url": "https://api.github.com/users/baxterthehacker/following{/other_user}",
+      "gists_url": "https://api.github.com/users/baxterthehacker/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/baxterthehacker/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/baxterthehacker/subscriptions",
+      "organizations_url": "https://api.github.com/users/baxterthehacker/orgs",
+      "repos_url": "https://api.github.com/users/baxterthehacker/repos",
+      "events_url": "https://api.github.com/users/baxterthehacker/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/baxterthehacker/received_events",
+      "type": "User",
+      "site_admin": false
+    }
+  }
+end
+
+def conn
+  Faraday.new(:url => 'http://localhost:3000') do |faraday|
+    faraday.request  :url_encoded             # form-encode POST params
+    faraday.response :logger                  # log requests to STDOUT
+    faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+  end
 end
