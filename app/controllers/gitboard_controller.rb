@@ -1,5 +1,5 @@
 class GitboardController < ApplicationController
   def show
-    @commits = Commit.all
+    @commits = Commit.all_commits
   end
 end
