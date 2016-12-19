@@ -4,4 +4,6 @@ Rails.application.routes.draw do
       post '/push', to: 'gitactions#create'
     end
   end
+
+  get '/', to: 'gitboard#show'
 end
